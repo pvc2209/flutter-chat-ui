@@ -4,6 +4,7 @@ import 'package:flutter_chat_app_ui/pages/chat_page.dart';
 import 'package:flutter_chat_app_ui/pages/message_page.dart';
 import 'package:flutter_chat_app_ui/pages/notification_page.dart';
 import 'package:flutter_chat_app_ui/pages/profile_page.dart';
+import 'package:flutter_chat_app_ui/pages/search_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -20,15 +21,19 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       debugShowCheckedModeBanner: false,
-      home: const MainPage(title: 'Flutter Demo Home Page'),
+      // home: const MainPage(title: 'Flutter Demo Home Page'),
+      initialRoute: "/",
+      routes: {
+        "/": (context) => const MainPage(),
+        "/search": (context) => const SearchPage(),
+        "/message": (context) => const MessagePage(),
+      },
     );
   }
 }
 
 class MainPage extends StatefulWidget {
-  const MainPage({Key? key, required this.title}) : super(key: key);
-
-  final String title;
+  const MainPage({Key? key}) : super(key: key);
 
   @override
   State<MainPage> createState() => _MainPageState();
