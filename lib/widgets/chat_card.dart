@@ -12,7 +12,11 @@ class ChatCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => Navigator.pushNamed(context, "/message"),
+      onTap: () => Navigator.pushNamed(
+        context,
+        "/message",
+        arguments: chatItem,
+      ),
       child: SizedBox(
         height: 100,
         child: Row(

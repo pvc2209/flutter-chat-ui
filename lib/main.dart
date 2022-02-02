@@ -1,6 +1,7 @@
 import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_chat_app_ui/pages/chat_page.dart';
+import 'package:flutter_chat_app_ui/pages/contact_page.dart';
 import 'package:flutter_chat_app_ui/pages/message_page.dart';
 import 'package:flutter_chat_app_ui/pages/notification_page.dart';
 import 'package:flutter_chat_app_ui/pages/profile_page.dart';
@@ -44,7 +45,7 @@ class _MainPageState extends State<MainPage> {
 
   final screens = const [
     ChatPage(),
-    MessagePage(),
+    ContactPage(),
     NotificationPage(),
     ProfilePage(),
   ];
