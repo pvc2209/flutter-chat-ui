@@ -174,3 +174,147 @@ class _MainPageState extends State<MainPage> {
     );
   }
 }
+
+// // main.dart
+// import 'package:flutter/material.dart';
+// import 'dart:math' as math;
+
+// void main() {
+//   runApp(const MyApp());
+// }
+
+// class MyApp extends StatelessWidget {
+//   const MyApp({Key? key}) : super(key: key);
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       debugShowCheckedModeBanner: false,
+//       title: 'KindaCode.com',
+//       theme: ThemeData(
+//         primarySwatch: Colors.indigo,
+//       ),
+//       home: const HomePage(),
+//     );
+//   }
+// }
+
+// class HomePage extends StatefulWidget {
+//   const HomePage({Key? key}) : super(key: key);
+
+//   @override
+//   _HomePageState createState() => _HomePageState();
+// }
+
+// class _HomePageState extends State<HomePage> {
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//         appBar: AppBar(
+//           title: const Text('Chat with KindaCode.com'),
+//         ),
+//         body: Padding(
+//           padding: const EdgeInsets.all(10),
+//           child: ListView(
+//             children: const [
+//               OutBubble(message: 'Hi there'),
+//             ],
+//           ),
+//         ));
+//   }
+// }
+
+// //  Received message bubble
+// class InBubble extends StatelessWidget {
+//   final String message;
+//   const InBubble({Key? key, required this.message}) : super(key: key);
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Row(
+//       mainAxisAlignment: MainAxisAlignment.start,
+//       crossAxisAlignment: CrossAxisAlignment.start,
+//       children: [
+//         Transform(
+//           alignment: Alignment.center,
+//           transform: Matrix4.rotationY(math.pi),
+//           child: CustomPaint(
+//             painter: Triangle(Colors.grey.shade300),
+//           ),
+//         ),
+//         Flexible(
+//           child: Container(
+//             padding: const EdgeInsets.all(15),
+//             margin: const EdgeInsets.only(bottom: 5),
+//             decoration: BoxDecoration(
+//               color: Colors.grey.shade300,
+//               borderRadius: const BorderRadius.only(
+//                 topRight: Radius.circular(19),
+//                 bottomLeft: Radius.circular(19),
+//                 bottomRight: Radius.circular(19),
+//               ),
+//             ),
+//             child: Text(
+//               message,
+//               style: const TextStyle(color: Colors.black, fontSize: 15),
+//             ),
+//           ),
+//         ),
+//       ],
+//     );
+//   }
+// }
+
+// // Sent message bubble
+// class OutBubble extends StatelessWidget {
+//   final String message;
+//   const OutBubble({Key? key, required this.message}) : super(key: key);
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Row(
+//       mainAxisAlignment: MainAxisAlignment.end,
+//       crossAxisAlignment: CrossAxisAlignment.end,
+//       children: [
+//         Container(
+//           padding: const EdgeInsets.all(15),
+//           decoration: BoxDecoration(
+//             color: Colors.indigo.shade600,
+//             borderRadius: const BorderRadius.only(
+//               topLeft: Radius.circular(19),
+//               bottomLeft: Radius.circular(19),
+//               topRight: Radius.circular(19),
+//             ),
+//           ),
+//           child: Text(
+//             message,
+//             style: const TextStyle(color: Colors.white, fontSize: 15),
+//           ),
+//         ),
+//         CustomPaint(painter: Triangle(Colors.indigo.shade600)),
+//       ],
+//     );
+//   }
+// }
+
+// // Create a custom triangle
+// class Triangle extends CustomPainter {
+//   final Color backgroundColor;
+//   Triangle(this.backgroundColor);
+
+//   @override
+//   void paint(Canvas canvas, Size size) {
+//     var paint = Paint()..color = backgroundColor;
+
+//     var path = Path();
+//     path.lineTo(0, 0);
+//     path.lineTo(0, -10);
+//     path.lineTo(5, 0);
+//     canvas.drawPath(path, paint);
+//   }
+
+//   @override
+//   bool shouldRepaint(CustomPainter oldDelegate) {
+//     return false;
+//   }
+// }

@@ -1,4 +1,5 @@
 import 'package:flutter_chat_app_ui/models/chat.dart';
+import 'package:flutter_chat_app_ui/models/message.dart';
 
 var chatsData = [
   Chat(
@@ -70,5 +71,104 @@ var chatsData = [
     image: "assets/images/10.jpeg",
     time: "CN",
     unreadMessageCount: 0,
+  ),
+];
+
+var messages = const [
+  Message(
+    text: "Chúc mừng năm mới...",
+    messageType: MessageType.text,
+    messageStatus: MessageStatus.viewed,
+    isSender: true,
+    time: "18:29",
+    date: "02/01/2022",
+  ),
+  Message(
+    text: "assets/images/1.jpeg",
+    messageType: MessageType.image,
+    messageStatus: MessageStatus.viewed,
+    isSender: false,
+    time: "09:02",
+    date: "02/01/2022",
+  ),
+  Message(
+    text: "Chào em 3",
+    messageType: MessageType.text,
+    messageStatus: MessageStatus.viewed,
+    isSender: false,
+    time: "10:12",
+    date: "01/01/2022",
+  ),
+  Message(
+    text: "Chào em 4",
+    messageType: MessageType.audio,
+    messageStatus: MessageStatus.viewed,
+    isSender: true,
+    time: "12:10",
+    date: "01/01/2022",
+  ),
+  Message(
+    text: "assets/images/background.jpg",
+    messageType: MessageType.image,
+    messageStatus: MessageStatus.viewed,
+    isSender: false,
+    time: "10:12",
+    date: "01/01/2022",
+  ),
+  Message(
+    text: "Chào em 4",
+    messageType: MessageType.text,
+    messageStatus: MessageStatus.viewed,
+    isSender: false,
+    time: "12:10",
+    date: "01/01/2022",
+  ),
+  Message(
+    text: "Chào em 3",
+    messageType: MessageType.text,
+    messageStatus: MessageStatus.viewed,
+    isSender: false,
+    time: "10:12",
+    date: "01/01/2022",
+  ),
+  Message(
+    text: "Chào em 4",
+    messageType: MessageType.text,
+    messageStatus: MessageStatus.viewed,
+    isSender: false,
+    time: "12:10",
+    date: "01/01/2022",
+  ),
+  Message(
+    text: "Chào em 3",
+    messageType: MessageType.text,
+    messageStatus: MessageStatus.viewed,
+    isSender: false,
+    time: "10:12",
+    date: "01/01/2022",
+  ),
+  Message(
+    text: "Chào em 4",
+    messageType: MessageType.text,
+    messageStatus: MessageStatus.viewed,
+    isSender: false,
+    time: "12:10",
+    date: "01/01/2022",
+  ),
+  Message(
+    text: "Chào em 3",
+    messageType: MessageType.text,
+    messageStatus: MessageStatus.viewed,
+    isSender: true,
+    time: "10:12",
+    date: "01/01/2022",
+  ),
+  Message(
+    text: "Chào em 4",
+    messageType: MessageType.audio,
+    messageStatus: MessageStatus.viewed,
+    isSender: false,
+    time: "12:10",
+    date: "01/01/2022",
   ),
 ];

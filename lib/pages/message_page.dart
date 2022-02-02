@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_chat_app_ui/data/data.dart';
 import 'package:flutter_chat_app_ui/models/chat.dart';
+import 'package:flutter_chat_app_ui/models/message.dart';
+import 'package:flutter_chat_app_ui/widgets/audio_message.dart';
+import 'package:flutter_chat_app_ui/widgets/image_message.dart';
+import 'package:flutter_chat_app_ui/widgets/text_message.dart';
 
 class MessagePage extends StatelessWidget {
   const MessagePage({Key? key}) : super(key: key);
@@ -11,9 +16,9 @@ class MessagePage extends StatelessWidget {
     return Stack(
       children: [
         Container(
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             image: DecorationImage(
-              image: AssetImage("assets/images/background.jpg"),
+              image: AssetImage("assets/images/bg.jpg"),
               fit: BoxFit.cover,
             ),
           ),
@@ -162,8 +167,45 @@ class MessagePage extends StatelessWidget {
           body: Column(
             children: [
               Expanded(
-                child: Container(
-                  color: Colors.white.withOpacity(0),
+                child: ListView.builder(
+                  reverse: true,
+                  itemCount: messages.length,
+                  itemBuilder: (context, index) {
+                    var message = messages[index];
+
+                    bool showDate = false;
+                    if (index == messages.length - 1 ||
+                        (index < messages.length - 1 &&
+                            messages[index].date != messages[index + 1].date)) {
+                      showDate = true;
+                    }
+
+                    switch (message.messageType) {
+                      case MessageType.text:
+                        return TextMessageWidget(
+                          showDate: showDate,
+                          message: message,
+                          index: index,
+                        );
+                      case MessageType.image:
+                        return ImageMessageWidget(
+                          showDate: showDate,
+                          message: message,
+                          index: index,
+                        );
+                      case MessageType.audio:
+                        return AudioMessageWidget(
+                          showDate: showDate,
+                          message: message,
+                          index: index,
+                        );
+                      case MessageType.video:
+                        // TODO: Handle this case.
+                        break;
+                    }
+
+                    return Container();
+                  },
                 ),
               ),
               TextField(
