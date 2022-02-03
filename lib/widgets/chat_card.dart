@@ -17,15 +17,18 @@ class ChatCard extends StatelessWidget {
         "/message",
         arguments: chatItem,
       ),
-      child: SizedBox(
+      child: Container(
+        color: Colors.white,
         height: 100,
         child: Row(
           children: [
             Container(
+              margin: const EdgeInsets.symmetric(horizontal: 20),
               color: Colors.white,
-              padding: const EdgeInsets.all(20),
+              width: 60,
+              height: 60,
               child: CircleAvatar(
-                radius: 36,
+                radius: 32,
                 backgroundColor: Colors.white,
                 backgroundImage: AssetImage(
                   chatItem.image,

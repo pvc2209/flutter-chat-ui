@@ -55,6 +55,13 @@ class AudioMessageWidget extends StatelessWidget {
                       left: 10,
                       right: index == 0 ? 70 : 50),
                   decoration: BoxDecoration(
+                    boxShadow: const [
+                      BoxShadow(
+                        offset: Offset(1, 1),
+                        color: Colors.black54,
+                        blurRadius: 5,
+                      ),
+                    ],
                     color: message.isSender
                         ? const Color(0xFFEFFEDD)
                         : Colors.white,
@@ -71,7 +78,7 @@ class AudioMessageWidget extends StatelessWidget {
                   ),
                   child: Row(
                     children: [
-                      Icon(
+                      const Icon(
                         Icons.play_circle,
                         color: Colors.green,
                         size: 35,
@@ -79,7 +86,7 @@ class AudioMessageWidget extends StatelessWidget {
                       Expanded(
                         child: Stack(
                           children: [
-                            Divider(
+                            const Divider(
                               color: Colors.green,
                               thickness: 2,
                             ),

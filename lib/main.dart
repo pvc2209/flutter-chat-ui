@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.green,
       ),
       debugShowCheckedModeBanner: false,
       // home: const MainPage(title: 'Flutter Demo Home Page'),
@@ -105,11 +105,11 @@ class _MainPageState extends State<MainPage> {
           ),
           BottomNavigationBarItem(
             icon: const Icon(
-              Icons.quick_contacts_mail_outlined,
+              Icons.people,
               color: Colors.grey,
             ),
             activeIcon: Icon(
-              Icons.quick_contacts_mail,
+              Icons.people,
               color: Theme.of(context).primaryColor,
             ),
             label: "Danh bạ",

@@ -65,6 +65,13 @@ class ImageMessageWidget extends StatelessWidget {
                 Container(
                   width: MediaQuery.of(context).size.width * 0.5,
                   decoration: BoxDecoration(
+                    boxShadow: const [
+                      BoxShadow(
+                        offset: Offset(1, 1),
+                        color: Colors.black54,
+                        blurRadius: 5,
+                      ),
+                    ],
                     borderRadius: BorderRadius.circular(12),
                     border: Border.all(width: 2, color: Colors.white),
                   ),

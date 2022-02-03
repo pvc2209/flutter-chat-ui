@@ -23,17 +23,45 @@ class TimeWidget extends StatelessWidget {
             fontSize: 14,
           ),
         ),
-        if (index == 0)
-          Row(
-            children: const [
-              SizedBox(width: 3),
-              Icon(
-                Icons.check_circle,
-                size: 16,
-                color: Colors.green,
-              ),
-            ],
-          ),
+        StatusIcon(
+          index: index,
+          message: message,
+        ),
+      ],
+    );
+  }
+}
+
+class StatusIcon extends StatelessWidget {
+  const StatusIcon({
+    Key? key,
+    required this.index,
+    required this.message,
+  }) : super(key: key);
+
+  final int index;
+  final Message message;
+
+  @override
+  Widget build(BuildContext context) {
+    if (index != 0 || !message.isSender) {
+      return Container();
+    }
+
+    IconData icon = Icons.schedule;
+    if (message.messageStatus == MessageStatus.not_view) {
+      icon = Icons.done;
+    } else if (message.messageStatus == MessageStatus.viewed) {
+      icon = Icons.done_all;
+    }
+    return Row(
+      children: [
+        const SizedBox(width: 3),
+        Icon(
+          icon,
+          size: 16,
+          color: Colors.green,
+        ),
       ],
     );
   }
