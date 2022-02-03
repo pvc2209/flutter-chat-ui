@@ -1,5 +1,6 @@
 import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_chat_app_ui/pages/call_page.dart';
 import 'package:flutter_chat_app_ui/pages/chat_page.dart';
 import 'package:flutter_chat_app_ui/pages/contact_page.dart';
 import 'package:flutter_chat_app_ui/pages/message_page.dart';
@@ -28,6 +29,7 @@ class MyApp extends StatelessWidget {
         "/": (context) => const MainPage(),
         "/search": (context) => const SearchPage(),
         "/message": (context) => const MessagePage(),
+        "/call": (context) => const CallPage(),
       },
     );
   }

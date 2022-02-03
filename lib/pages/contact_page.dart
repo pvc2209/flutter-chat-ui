@@ -116,7 +116,21 @@ class ContactPage extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
                         IconButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Chat fake = Chat(
+                              name: friend.name,
+                              lastMessage: "",
+                              image: friend.image,
+                              time: "",
+                              unreadMessageCount: 0,
+                            );
+
+                            Navigator.pushNamed(
+                              context,
+                              "/call",
+                              arguments: fake,
+                            );
+                          },
                           icon: const Icon(
                             Icons.phone_outlined,
                             color: Colors.grey,

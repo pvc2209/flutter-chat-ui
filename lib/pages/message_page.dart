@@ -60,9 +60,15 @@ class MessagePage extends StatelessWidget {
                     children: [
                       InkWell(
                         borderRadius: BorderRadius.circular(8),
-                        customBorder: CircleBorder(),
+                        customBorder: const CircleBorder(),
                         radius: 40,
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.pushNamed(
+                            context,
+                            "/call",
+                            arguments: chatItem,
+                          );
+                        },
                         child: const Padding(
                           padding: EdgeInsets.all(12.0),
                           child: Icon(
