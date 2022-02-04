@@ -46,6 +46,7 @@ class _SearchPageState extends State<SearchPage> {
                     showResult = true;
                   });
                 },
+                textInputAction: TextInputAction.search,
                 autofocus: true,
                 cursorColor: Colors.grey,
                 style: const TextStyle(fontSize: 16),

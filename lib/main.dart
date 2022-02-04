@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_chat_app_ui/pages/call_page.dart';
 import 'package:flutter_chat_app_ui/pages/chat_page.dart';
 import 'package:flutter_chat_app_ui/pages/contact_page.dart';
+import 'package:flutter_chat_app_ui/pages/login_page.dart';
 import 'package:flutter_chat_app_ui/pages/message_page.dart';
 import 'package:flutter_chat_app_ui/pages/notification_page.dart';
 import 'package:flutter_chat_app_ui/pages/profile_page.dart';
@@ -26,7 +27,8 @@ class MyApp extends StatelessWidget {
       // home: const MainPage(title: 'Flutter Demo Home Page'),
       initialRoute: "/",
       routes: {
-        "/": (context) => const MainPage(),
+        "/": (context) => LoginPage(),
+        "/main": (context) => const MainPage(),
         "/search": (context) => const SearchPage(),
         "/message": (context) => const MessagePage(),
         "/call": (context) => const CallPage(),
