@@ -12,6 +12,8 @@ class SearchPage extends StatefulWidget {
 }
 
 class _SearchPageState extends State<SearchPage> {
+  var _controller = TextEditingController();
+
   bool showLoading = false;
   bool showResult = false;
 
@@ -26,6 +28,7 @@ class _SearchPageState extends State<SearchPage> {
               height: 40,
               margin: const EdgeInsets.only(right: 10),
               child: TextField(
+                controller: _controller,
                 onChanged: (value) {
                   // pha ke :)
                   if (showLoading == false) {
@@ -51,12 +54,16 @@ class _SearchPageState extends State<SearchPage> {
                 cursorColor: Colors.grey,
                 style: const TextStyle(fontSize: 16),
                 decoration: InputDecoration(
+                  suffixIcon: IconButton(
+                    onPressed: _controller.clear,
+                    icon: Icon(Icons.clear),
+                  ),
                   hintText: "Tìm bạn bè, tin nhắn ...",
                   prefixIcon: const Icon(
                     Icons.search,
                     color: Colors.grey,
                   ),
-                  contentPadding: const EdgeInsets.all(1),
+                  contentPadding: const EdgeInsets.all(0),
                   fillColor: Colors.white,
                   filled: true,
                   border: OutlineInputBorder(

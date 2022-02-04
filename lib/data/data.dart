@@ -1,6 +1,7 @@
 import 'package:flutter_chat_app_ui/models/chat.dart';
 import 'package:flutter_chat_app_ui/models/friend.dart';
 import 'package:flutter_chat_app_ui/models/message.dart';
+import 'package:flutter_chat_app_ui/models/notification.dart';
 
 var chatsData = [
   Chat(
@@ -224,5 +225,20 @@ var friends = [
     name: "Mạnh Thắng",
     isOnline: false,
     image: "assets/images/10.jpeg",
+  ),
+];
+
+var notifications = const [
+  Notification(
+    title: "Lời mời kết bạn",
+    time: "25 phút trước",
+    content: "Làm bạn nhé!",
+    image: "assets/images/2.jpeg",
+  ),
+  Notification(
+    title: "Lời mời kết bạn",
+    time: "25 phút trước",
+    content: "Làm bạn nhé!",
+    image: "assets/images/3.jpeg",
   ),
 ];

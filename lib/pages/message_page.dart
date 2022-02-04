@@ -179,7 +179,7 @@ class MessagePage extends StatelessWidget {
                             value: 5,
                           ),
                         ],
-                      )
+                      ),
                     ],
                   ),
                 )
@@ -189,45 +189,51 @@ class MessagePage extends StatelessWidget {
           body: Column(
             children: [
               Expanded(
-                child: ListView.builder(
-                  reverse: true,
-                  itemCount: messages.length,
-                  itemBuilder: (context, index) {
-                    var message = messages[index];
+                child: RawScrollbar(
+                  thumbColor: Colors.black54,
+                  radius: const Radius.circular(4),
+                  thickness: 5,
+                  child: ListView.builder(
+                    reverse: true,
+                    itemCount: messages.length,
+                    itemBuilder: (context, index) {
+                      var message = messages[index];
 
-                    bool showDate = false;
-                    if (index == messages.length - 1 ||
-                        (index < messages.length - 1 &&
-                            messages[index].date != messages[index + 1].date)) {
-                      showDate = true;
-                    }
+                      bool showDate = false;
+                      if (index == messages.length - 1 ||
+                          (index < messages.length - 1 &&
+                              messages[index].date !=
+                                  messages[index + 1].date)) {
+                        showDate = true;
+                      }
 
-                    switch (message.messageType) {
-                      case MessageType.text:
-                        return TextMessageWidget(
-                          showDate: showDate,
-                          message: message,
-                          index: index,
-                        );
-                      case MessageType.image:
-                        return ImageMessageWidget(
-                          showDate: showDate,
-                          message: message,
-                          index: index,
-                        );
-                      case MessageType.audio:
-                        return AudioMessageWidget(
-                          showDate: showDate,
-                          message: message,
-                          index: index,
-                        );
-                      case MessageType.video:
-                        // TODO: Handle this case.
-                        break;
-                    }
+                      switch (message.messageType) {
+                        case MessageType.text:
+                          return TextMessageWidget(
+                            showDate: showDate,
+                            message: message,
+                            index: index,
+                          );
+                        case MessageType.image:
+                          return ImageMessageWidget(
+                            showDate: showDate,
+                            message: message,
+                            index: index,
+                          );
+                        case MessageType.audio:
+                          return AudioMessageWidget(
+                            showDate: showDate,
+                            message: message,
+                            index: index,
+                          );
+                        case MessageType.video:
+                          // TODO: Handle this case.
+                          break;
+                      }
 
-                    return Container();
-                  },
+                      return Container();
+                    },
+                  ),
                 ),
               ),
               TextField(
