@@ -150,6 +150,22 @@ class MessagePage extends StatelessWidget {
                             child: Row(
                               children: const [
                                 Icon(
+                                  Icons.person_add_outlined,
+                                  size: 30,
+                                  color: Colors.grey,
+                                ),
+                                SizedBox(
+                                  width: 10,
+                                ),
+                                Text("Thêm vào danh bạ"),
+                              ],
+                            ),
+                            value: 4,
+                          ),
+                          PopupMenuItem(
+                            child: Row(
+                              children: const [
+                                Icon(
                                   Icons.delete_forever_outlined,
                                   size: 30,
                                   color: Colors.grey,
@@ -160,7 +176,7 @@ class MessagePage extends StatelessWidget {
                                 Text("Xóa cuộc trò chuyện"),
                               ],
                             ),
-                            value: 4,
+                            value: 5,
                           ),
                         ],
                       )

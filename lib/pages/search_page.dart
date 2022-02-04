@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_chat_app_ui/data/data.dart';
+import 'package:flutter_chat_app_ui/widgets/recent_search.dart';
+import 'package:flutter_chat_app_ui/widgets/result_search.dart';
+import 'package:flutter_chat_app_ui/widgets/shimmer_loading.dart';
 
 class SearchPage extends StatefulWidget {
   const SearchPage({Key? key}) : super(key: key);
@@ -10,6 +13,7 @@ class SearchPage extends StatefulWidget {
 
 class _SearchPageState extends State<SearchPage> {
   bool showLoading = false;
+  bool showResult = false;
 
   @override
   Widget build(BuildContext context) {
@@ -27,15 +31,20 @@ class _SearchPageState extends State<SearchPage> {
                   if (showLoading == false) {
                     setState(() {
                       showLoading = true;
+                      showResult = false;
+
+                      Future.delayed(const Duration(seconds: 1), () {
+                        setState(() {
+                          showLoading = false;
+                        });
+                      });
                     });
                   }
                 },
                 onSubmitted: (value) {
-                  if (showLoading == true) {
-                    setState(() {
-                      showLoading = false;
-                    });
-                  }
+                  setState(() {
+                    showResult = true;
+                  });
                 },
                 autofocus: true,
                 cursorColor: Colors.grey,
@@ -75,160 +84,20 @@ class _SearchPageState extends State<SearchPage> {
           ],
         ),
       ),
-      body: showLoading
-          ? const ShimmerLoadingWidget()
-          : Container(
-              color: Colors.white,
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: Column(
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      const Text(
-                        "Tìm kiếm gần đây",
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                      TextButton(
-                        onPressed: () {},
-                        child: const Text(
-                          "Xóa",
-                          style: TextStyle(fontSize: 16),
-                        ),
-                      ),
-                    ],
-                  ),
-                  Expanded(
-                      child: ListView.builder(
-                    itemCount: 3,
-                    itemBuilder: (context, index) {
-                      return ResultSearchWidget(
-                        name: friends[index].name,
-                        image: friends[index].image,
-                        phoneNumber: "0394779999",
-                      );
-                    },
-                  )),
-                ],
-              ),
-            ),
-      // body: ShimmerLoadingWidget(),
-    );
-  }
-}
+      body: Builder(
+        builder: (context) {
+          if (showResult) {
+            return const ResultSearch();
+          }
 
-class ResultSearchWidget extends StatelessWidget {
-  const ResultSearchWidget({
-    Key? key,
-    required this.image,
-    required this.name,
-    required this.phoneNumber,
-  }) : super(key: key);
-
-  final String image;
-  final String name;
-  final String phoneNumber;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      color: Colors.white,
-      height: 100,
-      child: Row(
-        children: [
-          CircleAvatar(
-            radius: 32,
-            backgroundColor: const Color(0xFFF5F4F6),
-            backgroundImage: AssetImage(image),
-          ),
-          const SizedBox(width: 20),
-          Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Container(
-                width: 100,
-                height: 20,
-                child: Text(
-                  name,
-                  style: const TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-              ),
-              const SizedBox(height: 10),
-              Container(
-                width: 200,
-                height: 20,
-                child: Text(
-                  phoneNumber,
-                  style: const TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.w600,
-                    color: Colors.black54,
-                  ),
-                ),
-              ),
-            ],
-          )
-        ],
+          if (showLoading) {
+            return const ShimmerLoadingWidget();
+          } else {
+            return const RecentSearch();
+          }
+        },
       ),
-    );
-  }
-}
-
-class ShimmerLoadingWidget extends StatelessWidget {
-  const ShimmerLoadingWidget({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return ListView.builder(
-      itemCount: 10,
-      itemBuilder: (context, index) {
-        return Container(
-          color: Colors.white,
-          margin: const EdgeInsets.symmetric(horizontal: 20),
-          height: 100,
-          child: Row(
-            children: [
-              const CircleAvatar(
-                radius: 32,
-                backgroundColor: Color(0xFFF5F4F6),
-              ),
-              const SizedBox(width: 20),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Container(
-                    width: 100,
-                    height: 20,
-                    decoration: BoxDecoration(
-                      color: const Color(0xFFF5F4F6),
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                  ),
-                  const SizedBox(height: 10),
-                  Container(
-                    width: 200,
-                    height: 20,
-                    decoration: BoxDecoration(
-                      color: const Color(0xFFF5F4F6),
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                  ),
-                ],
-              )
-            ],
-          ),
-        );
-      },
+      // body: ShimmerLoadingWidget(),
     );
   }
 }
