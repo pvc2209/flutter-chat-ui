@@ -1,3 +1,4 @@
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatefulWidget {
@@ -25,10 +26,31 @@ class _LoginPageState extends State<LoginPage> {
             // mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              Container(
-                margin: EdgeInsets.all(50),
-                height: 150,
-                child: Image.asset('assets/images/logo_small.jpg'),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 80),
+                child: Row(
+                  children: [
+                    Container(
+                      height: 80,
+                      child: Image.asset('assets/images/logo_small.jpg'),
+                    ),
+                    const SizedBox(width: 15),
+                    AnimatedTextKit(
+                      totalRepeatCount: 4,
+                      animatedTexts: [
+                        TypewriterAnimatedText(
+                          'KaLo Chat',
+                          textStyle: const TextStyle(
+                            fontSize: 48,
+                            fontWeight: FontWeight.w900,
+                            color: Colors.blue,
+                          ),
+                          speed: const Duration(milliseconds: 200),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
               ),
               TextField(
                 style: const TextStyle(color: Colors.black),

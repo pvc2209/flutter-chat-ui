@@ -88,7 +88,9 @@ class CallPage extends StatelessWidget {
                         Icons.call_end,
                         color: Colors.white,
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                      },
                       title: "Kết thúc",
                       backgroundColor: Colors.red,
                     ),
