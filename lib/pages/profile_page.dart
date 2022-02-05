@@ -60,6 +60,8 @@ class ProfilePage extends StatelessWidget {
                         case 2:
                           break;
                         case 3:
+                          Navigator.popAndPushNamed(context, "/");
+                          break;
                       }
                     },
                     shape: RoundedRectangleBorder(
