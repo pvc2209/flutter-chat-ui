@@ -11,6 +11,43 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   bool _isObscure = true;
 
+  var _phoneNumberController = TextEditingController();
+  var _passController = TextEditingController();
+
+  Future<void> _showMyDialog() async {
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: false, // user must tap button!
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text(
+            'Thông báo',
+            style: TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          content: const SingleChildScrollView(
+            child: Text("Tài khoản hoặc mật khẩu sai!"),
+          ),
+          actions: <Widget>[
+            TextButton(
+              child: const Text(
+                'OK',
+                style: TextStyle(
+                  fontSize: 16,
+                ),
+              ),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -53,6 +90,7 @@ class _LoginPageState extends State<LoginPage> {
                 ),
               ),
               TextField(
+                controller: _phoneNumberController,
                 style: const TextStyle(color: Colors.black),
                 keyboardType: TextInputType.phone,
                 decoration: InputDecoration(
@@ -76,6 +114,7 @@ class _LoginPageState extends State<LoginPage> {
                 height: 16.0,
               ),
               TextField(
+                controller: _passController,
                 style: const TextStyle(color: Colors.black),
                 obscureText: _isObscure,
                 decoration: InputDecoration(
@@ -116,7 +155,14 @@ class _LoginPageState extends State<LoginPage> {
                   elevation: 5.0,
                   child: MaterialButton(
                     onPressed: () {
-                      Navigator.pushReplacementNamed(context, "/main");
+                      var phone = _phoneNumberController.text;
+                      var pass = _passController.text;
+
+                      if (phone == "0394773456" && pass == "123456") {
+                        Navigator.pushReplacementNamed(context, "/main");
+                      } else {
+                        _showMyDialog();
+                      }
                     },
                     minWidth: 200.0,
                     height: 42.0,
@@ -133,7 +179,7 @@ class _LoginPageState extends State<LoginPage> {
               TextButton(
                 onPressed: () {},
                 child: const Text(
-                  "Đăng ký",
+                  "Đăng ký tài khoản",
                   style: TextStyle(
                     fontSize: 18,
                     color: Colors.blue,

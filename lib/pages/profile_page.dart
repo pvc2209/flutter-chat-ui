@@ -27,7 +27,7 @@ class ProfilePage extends StatelessWidget {
                   height: 4,
                 ),
                 Text(
-                  "online",
+                  "Online",
                   style: TextStyle(
                     fontSize: 14,
                     color: Colors.white.withOpacity(0.8),
@@ -160,6 +160,10 @@ class Profile extends StatelessWidget {
           ProfileCard(
             title: "0394 779 999",
             subtitle: "Bấm để cập nhật số điện thoại",
+          ),
+          ProfileCard(
+            title: "Mật khẩu",
+            subtitle: "Bấm để đổi mật khẩu",
           ),
           ProfileCard(
             title: "Biệt danh",

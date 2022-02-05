@@ -57,7 +57,7 @@ class NotificationPage extends StatelessWidget {
                         backgroundColor: Color(0xFFFE4A49),
                         foregroundColor: Colors.white,
                         icon: Icons.delete,
-                        label: 'Delete',
+                        label: 'Xóa',
                       ),
                     ],
                   ),

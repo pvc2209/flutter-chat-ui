@@ -47,7 +47,7 @@ class CallPage extends StatelessWidget {
                 ),
                 const SizedBox(height: 20),
                 const Text(
-                  "Đang gọi...",
+                  "Đang gọi đi...",
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 16,

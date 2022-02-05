@@ -248,7 +248,7 @@ class MessagePage extends StatelessWidget {
                   prefixIcon: InkWell(
                     onTap: () {},
                     child: const Icon(
-                      Icons.face,
+                      Icons.sentiment_satisfied_alt,
                       size: 28.0,
                       color: Colors.grey,
                     ),

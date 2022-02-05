@@ -12,7 +12,7 @@ class ShimmerLoadingWidget extends StatelessWidget {
       itemBuilder: (context, index) {
         return Container(
           color: Colors.white,
-          margin: const EdgeInsets.symmetric(horizontal: 20),
+          padding: const EdgeInsets.symmetric(horizontal: 20),
           height: 100,
           child: Row(
             children: [
