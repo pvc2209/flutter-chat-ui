@@ -16,7 +16,7 @@ class NotificationPage extends StatelessWidget {
           // Text button thì hay hơn
           IconButton(
             onPressed: () {},
-            icon: const Icon(Icons.delete),
+            icon: const Icon(Icons.delete_sweep),
           ),
         ],
       ),
