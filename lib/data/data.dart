@@ -80,7 +80,7 @@ var messages = const [
   Message(
     text: "Tks you",
     messageType: MessageType.text,
-    messageStatus: MessageStatus.viewed,
+    messageStatus: MessageStatus.not_view,
     isSender: true,
     time: "20:45",
     date: "02/01/2022",

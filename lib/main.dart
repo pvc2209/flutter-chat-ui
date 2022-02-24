@@ -127,7 +127,7 @@ class _MainPageState extends State<MainPage> {
               badgeContent: const Padding(
                 padding: EdgeInsets.symmetric(vertical: 2, horizontal: 7),
                 child: Text(
-                  "1",
+                  "2",
                   style: TextStyle(
                     fontSize: 12,
                     color: Colors.white,
@@ -146,7 +146,7 @@ class _MainPageState extends State<MainPage> {
               badgeContent: const Padding(
                 padding: EdgeInsets.symmetric(vertical: 2, horizontal: 7),
                 child: Text(
-                  "1",
+                  "2",
                   style: TextStyle(
                     fontSize: 12,
                     color: Colors.white,
