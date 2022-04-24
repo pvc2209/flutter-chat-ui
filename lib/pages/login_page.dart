@@ -155,14 +155,16 @@ class _LoginPageState extends State<LoginPage> {
                   elevation: 5.0,
                   child: MaterialButton(
                     onPressed: () {
-                      var phone = _phoneNumberController.text;
-                      var pass = _passController.text;
+                      // var phone = _phoneNumberController.text;
+                      // var pass = _passController.text;
 
-                      if (phone == "0394773456" && pass == "123456") {
-                        Navigator.pushReplacementNamed(context, "/main");
-                      } else {
-                        _showMyDialog();
-                      }
+                      // if (phone == "0394773456" && pass == "123456") {
+                      //   Navigator.pushReplacementNamed(context, "/main");
+                      // } else {
+                      //   _showMyDialog();
+                      // }
+
+                      Navigator.pushReplacementNamed(context, "/main");
                     },
                     minWidth: 200.0,
                     height: 42.0,

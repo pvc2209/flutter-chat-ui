@@ -6,8 +6,27 @@ import 'package:flutter_chat_app_ui/widgets/audio_message.dart';
 import 'package:flutter_chat_app_ui/widgets/image_message.dart';
 import 'package:flutter_chat_app_ui/widgets/text_message.dart';
 
-class MessagePage extends StatelessWidget {
+class MessagePage extends StatefulWidget {
   const MessagePage({Key? key}) : super(key: key);
+
+  @override
+  State<MessagePage> createState() => _MessagePageState();
+}
+
+class _MessagePageState extends State<MessagePage> {
+  final _controller = TextEditingController();
+  bool showSendButton = false;
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -237,6 +256,18 @@ class MessagePage extends StatelessWidget {
                 ),
               ),
               TextField(
+                controller: _controller,
+                onChanged: (value) {
+                  if (value.isNotEmpty && showSendButton == false) {
+                    setState(() {
+                      showSendButton = true;
+                    });
+                  } else if (value.isEmpty) {
+                    setState(() {
+                      showSendButton = false;
+                    });
+                  }
+                },
                 textInputAction: TextInputAction.send,
                 decoration: InputDecoration(
                   enabledBorder: InputBorder.none,
@@ -253,32 +284,66 @@ class MessagePage extends StatelessWidget {
                       color: Colors.grey,
                     ),
                   ),
-                  suffixIcon: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      InkWell(
-                        onTap: () {},
-                        child: const Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 8),
-                          child: Icon(
-                            Icons.mic_outlined,
-                            size: 28.0,
-                            color: Colors.grey,
+                  suffixIcon: AnimatedSwitcher(
+                    duration: const Duration(milliseconds: 500),
+                    transitionBuilder:
+                        (Widget child, Animation<double> animation) {
+                      return ScaleTransition(scale: animation, child: child);
+                    },
+                    child: !showSendButton
+                        ? Row(
+                            key: ValueKey(1),
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              InkWell(
+                                onTap: () {},
+                                child: const Padding(
+                                  padding: EdgeInsets.symmetric(horizontal: 8),
+                                  child: Icon(
+                                    Icons.mic_outlined,
+                                    size: 28.0,
+                                    color: Colors.grey,
+                                  ),
+                                ),
+                              ),
+                              InkWell(
+                                onTap: () {},
+                                child: const Padding(
+                                  padding: EdgeInsets.symmetric(horizontal: 8),
+                                  child: Icon(
+                                    Icons.image,
+                                    size: 28.0,
+                                    color: Colors.grey,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          )
+                        : Row(
+                            key: ValueKey(2),
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Opacity(
+                                opacity: 0,
+                                child: Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 8.0),
+                                  child: Icon(
+                                    Icons.mic_outlined,
+                                    size: 28.0,
+                                  ),
+                                ),
+                              ),
+                              Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 8.0),
+                                child: Icon(
+                                  Icons.send,
+                                  size: 28.0,
+                                ),
+                              ),
+                            ],
                           ),
-                        ),
-                      ),
-                      InkWell(
-                        onTap: () {},
-                        child: const Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 8),
-                          child: Icon(
-                            Icons.image,
-                            size: 28.0,
-                            color: Colors.grey,
-                          ),
-                        ),
-                      ),
-                    ],
                   ),
                 ),
               ),
